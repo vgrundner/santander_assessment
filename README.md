@@ -1,18 +1,17 @@
 Santander_assessment
 ==============================
 
-# What Is this?
--------------
-
+Introduction
 3 sections of technical assessment. Deadline: 26.11.2021
+
 # Section 1: python scripting
-Version: python 3
+Filename: rename_wav.py
+To be used version: python 3
 
-Input params:
+Script parameter:
+1- Path to input folder
 
-
-
-# How To Use This
----------------
-
+Local usage:
+./rename_wav.py [path to input folder]
 Example:
+./rename_wav.py Input_files/
