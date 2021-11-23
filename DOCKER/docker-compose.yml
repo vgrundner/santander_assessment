@@ -1,0 +1,42 @@
+version: '3'
+ 
+services:
+    web1:
+        build: ./HTML_one
+        expose:
+            - 80
+        networks:
+            public_net:
+                    ipv4_address: "172.16.0.10"
+                    aliases: 
+                        - nginx1
+                    
+    web2:
+        build: ./HTML_two
+        expose:
+            - 80
+        networks:
+            public_net:
+                    ipv4_address: "172.16.0.20"
+                    aliases: 
+                        - nginx2
+    haproxy:
+        build: ./haproxy
+        ports:
+            - 8084:80
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: 172.16.0.2
+        environment:
+            - NGINX_1_IP=172.16.0.10
+            - NGINX_2_IP=172.16.0.20
+            - NGINX_EXPOSED_PORT=80
+networks:
+    public_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.16.0.0/24

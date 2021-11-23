@@ -1,0 +1,13 @@
+FROM haproxytech/haproxy-ubuntu:latest
+
+# Expose web ports
+EXPOSE 80
+
+# Expose administrative ports
+EXPOSE 81 82 88
+
+ADD haproxy.cfg /etc/haproxy/haproxy.cfg
+ADD haproxy.sh /
+RUN chmod a+x /haproxy.sh
+
+ENTRYPOINT /haproxy.sh
